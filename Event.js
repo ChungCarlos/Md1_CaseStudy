@@ -1,5 +1,5 @@
 class Person {
-    constructor(name, gender, date, address, telephone, room, vehicle) {
+    constructor(name, gender, date, address, telephone, room, vehicle,note) {
         this.name = name
         this.gender = gender
         this.date = date
@@ -7,9 +7,10 @@ class Person {
         this.telephone = telephone
         this.room = room
         this.vehicle = vehicle
+        this.note = note
     }
 
-    setAll(name, gender, date, address, telephone, room, vehicle) {
+    setAll(name, gender, date, address, telephone, room, vehicle,note) {
         this.name = name
         this.gender = gender
         this.date = date
@@ -17,6 +18,7 @@ class Person {
         this.telephone = telephone
         this.room = room
         this.vehicle = vehicle
+        this.note = note
     }
 
     getName() {
@@ -46,15 +48,18 @@ class Person {
     getVehicle() {
         return this.vehicle
     }
+    getNote(){
+        return this.note
+    }
 }
 
-let resident1 = new Person("Messi Lùn", "Male", "1995-12-05", "Argentina", "0123456789", "P12a10", "Car")
-let resident2 = new Person("Ronaldo Điệu", "Male", "1988-10-05", "Portugal", "09699969", "P302", "Car")
-let resident3 = new Person("Harry Maguire", "Male", "1993-03-05", "England", "0946123456", "P405", "Bike")
-let resident4 = new Person("Neymar Jr", "Male", "1995-12-05", "Brazil", "0123456789", "P12a10", "Car")
-let resident5 = new Person("Rô Vẩu", "Male", "1988-10-05", "Brazil", "09699969", "P302", "Car")
-let resident6 = new Person("Luis Suárez", "Male", "1987-05-05", "Uruguay", "0946123456", "P405", "Car")
-let resident7 = new Person("Chung Carlos", "Male", "1995-05-10", "Nam Định", "0969969415", "P100", "Car")
+let resident1 = new Person("Messi Lùn", "Male", "1995-12-05", "Argentina", "0123456789", "P12a10", "Car","Thường đóng tiền chậm")
+let resident2 = new Person("Ronaldo Điệu", "Male", "1988-10-05", "Portugal", "09699969", "P302", "Car","Điệu chẩy dãi")
+let resident3 = new Person("Harry Maguire", "Male", "1993-03-05", "England", "0946123456", "P405", "Bike","Thường diễn hài")
+let resident4 = new Person("Neymar Jr", "Male", "1995-12-05", "Brazil", "0123456789", "P12a10", "Car", "Hát rất dở")
+let resident5 = new Person("Rô Vẩu", "Male", "1988-10-05", "Brazil", "09699969", "P302", "Car","Nói phét hơi siêu")
+let resident6 = new Person("Luis Suárez", "Male", "1987-05-05", "Uruguay", "0946123456", "P405", "Car","Răng hơi nhọn")
+let resident7 = new Person("Chung Carlos", "Male", "1995-05-10", "Nam Định", "0969969415", "P100", "Car","Hơi bị nhiều tiền")
 
 let arr = [resident1, resident2, resident3, resident4, resident5, resident6, resident7]
 
@@ -71,7 +76,7 @@ function searchResident() {
     let listS = document.createElement("table")
     for (let i = 0; i < result.length; i++) {
         if (val !== '' && val !== ' ') {
-            listS.innerHTML += `<tr><td>${result[i].name}</td><td>${result[i].gender}</td><td>${result[i].address}</td><td>${result[i].room}</td><td>${result[i].vehicle}</td><td>${result[i].telephone}</td></tr>`;
+            listS.innerHTML += `<tr><td>${result[i].name}</td><td>${result[i].gender}</td><td>${arr[i].date}</td><td>${result[i].address}</td><td>${result[i].room}</td><td>${result[i].vehicle}</td><td>${result[i].telephone}</td><td>${result[i].note}</td></tr>`;
             list.appendChild(listS); // Thêm phần tử của Lists vào 1 phần tử List vào cuối danh sách
         }
     }
@@ -80,12 +85,12 @@ function searchResident() {
 // Display danh sach:
 function displayList() {
     let count = 0;
-    let list = `<tr><th>STT</th><th>Họ Tên</th><th>Giới Tính</th><th>Ngày Sinh</th><th>Địa Chỉ TT</th><th>Số Điện Thoại</th><th>Căn Hộ</th><th>Phương Tiện</th><th colspan="2">Chức Năng</th></tr>`;
+    let list = `<tr><th>STT</th><th>Họ Tên</th><th>Giới Tính</th><th>Ngày Sinh</th><th>Địa Chỉ TT</th><th>Số Điện Thoại</th><th>Căn Hộ</th><th>Phương Tiện</th><th>Note</th><th colspan="2">Chức Năng</th></tr>`;
     for (let i = 0; i < arr.length; i++) {
         count++;
-        list += `<tr><td id="td1">${i + 1}</td><td>${arr[i].name}</td><td>${arr[i].gender}</td><td>${arr[i].date}</td><td>${arr[i].address}</td> <td>${arr[i].telephone}</td><td>${arr[i].room}</td><td  id="th1">${arr[i].vehicle}</td> <td><button onclick='edit(${i})'>Edit</button></td><td><button onclick='deleteProduct(${i})'>Delete</button></td></tr>`;
+        list += `<tr><td id="td1">${i + 1}</td><td>${arr[i].name}</td><td>${arr[i].gender}</td><td>${arr[i].date}</td><td>${arr[i].address}</td> <td>${arr[i].telephone}</td><td>${arr[i].room}</td><td  id="th1">${arr[i].vehicle}</td><td>${arr[i].note}</td><td><button onclick='edit(${i})'>Edit</button></td><td><button onclick='deleteProduct(${i})'>Delete</button></td></tr>`;
     }
-    return document.getElementById("residentList").innerHTML = `<table>${list}<tr id="tr1"><td>Tổng:</td><td colspan="9">${count}</td></tr></table>`;
+    return document.getElementById("residentList").innerHTML = `<table>${list}<tr id="tr1"><td>Tổng:</td><td colspan="10">${count}</td></tr></table>`;
 }
 
 displayList();
@@ -110,7 +115,8 @@ function addResident() {
     const newTelephone = document.getElementById("addTelephone").value;
     const newRoom = document.getElementById("addRoom").value;
     const newVehicle = document.getElementById("vehicle").value;
-    temptPerson.setAll(newName, newGender, newDate, newAddress, newTelephone, newRoom, newVehicle)
+    const newNote = document.getElementById("note").value;
+    temptPerson.setAll(newName, newGender, newDate, newAddress, newTelephone, newRoom, newVehicle,newNote)
     if (newName !== '' && newDate !== '' && newAddress !== '' && newTelephone && newRoom !== '') {
         arr.push(temptPerson)
     } else {
@@ -137,7 +143,8 @@ function resetForm() {
         '<select id="vehicle"> ' +
         '<option value="Bike">Bike</option> ' +
         '<option value="Car">Car</option> ' +
-        '</select><p> ' +
+        '</select><br>Note:<br>' +
+        '<textarea id="note" placeholder="Enter 1 more information:" rows="5" cols="35"></textarea></br>' +
         '<button type="button" onclick="update()">Thêm cư dân</button></p></form>'
 }
 
@@ -156,8 +163,9 @@ function edit(i) {
         '<select id="vehicle"> ' +
         '<option value="Bike">Bike</option> ' +
         '<option value="Car">Car</option> ' +
-        '</select><p> ' +
-        '<button type="button" onclick="update()">Update</button></p></form>'
+        '</select><br>Note:<br>' +
+        '<textarea id="note" placeholder="Enter 1 more information:" rows="5" cols="35"></textarea><br>' +
+        '<button type="button" onclick="update()">Update</button></form>'
     upDate.scrollIntoView();
 
     document.getElementById('addName').value = arr[i].getName();
@@ -167,6 +175,7 @@ function edit(i) {
     document.getElementById('addAddress').value = arr[i].getAddress();
     document.getElementById('addTelephone').value = arr[i].getTelephone();
     document.getElementById('vehicle').value = arr[i].getVehicle();
+    document.getElementById('note').value = arr[i].getNote();
 
     this.update = function () {
         let ptPerson = new Person()
@@ -177,7 +186,8 @@ function edit(i) {
         const ewTelephone = document.getElementById("addTelephone").value;
         const ewRoom = document.getElementById("addRoom").value;
         const ewVehicle = document.getElementById("vehicle").value;
-        ptPerson.setAll(ewName, ewGender, ewDate, ewAddress, ewTelephone, ewRoom, ewVehicle)
+        const ewNote = document.getElementById("note").value;
+        ptPerson.setAll(ewName, ewGender, ewDate, ewAddress, ewTelephone, ewRoom, ewVehicle,ewNote)
         if (ewName !== '' && ewDate !== '' && ewAddress !== '' && ewTelephone && ewRoom !== '') {
             arr[i] = ptPerson
             document.getElementById("updates").style.display="none";
