@@ -62,7 +62,7 @@ function searchResident() {
     let val = document.getElementById("txtSearch").value;
     let result = [];
     for (let i = 0; i < arr.length; i++) {
-        if (Object.values(arr[i]).toString().includes(val)) {
+        if (Object.values(arr[i]).toString().toLowerCase().includes(val.toLowerCase())) {
             result.push(arr[i]);
         }
     }
@@ -73,9 +73,6 @@ function searchResident() {
             let listS = document.createElement("table")
             listS.innerHTML = `<tr><td>${result[i].name}</td><td>${result[i].gender}</td><td>${result[i].address}</td><td>${result[i].room}</td><td>${result[i].vehicle}</td><td>${result[i].telephone}</td></tr>`;
             list.appendChild(listS); // Thêm phần tử của Lists vào 1 phần tử List vào cuối danh sách
-        } else {
-            alert("Nhập thông tin cần tìm")
-            break;
         }
     }
 }
@@ -120,6 +117,8 @@ function addResident() {
         alert("Vui lòng nhập đầy đủ thông tin!")
     }
 
+    document.getElementById("updates").style.display="none";
+
     displayList();
     document.getElementById("myForm").reset();
 }
@@ -143,6 +142,7 @@ function resetForm() {
 }
 
 function edit(i) {
+    document.getElementById("updates").style.display="block";
     let upDate = document.getElementById("updates")
     upDate.innerHTML = '<form id="myForm" onSubmit="addResident(); return false;"> <p>Tên Cư Dân:<br> ' +
         '<input type="text" id="addName" placeholder="Enter Name"><br>Giới Tính:<br> ' +
@@ -180,6 +180,7 @@ function edit(i) {
         ptPerson.setAll(ewName, ewGender, ewDate, ewAddress, ewTelephone, ewRoom, ewVehicle)
         if (ewName !== '' && ewDate !== '' && ewAddress !== '' && ewTelephone && ewRoom !== '') {
             arr[i] = ptPerson
+            document.getElementById("updates").style.display="none";
             displayList()
             document.getElementById("myForm").reset();
             resetForm();
@@ -187,4 +188,8 @@ function edit(i) {
             alert("Vui lòng nhập đầy đủ thông tin!")
         }
     }
+}
+
+function addRes(){
+    document.getElementById("updates").style.display = "block";
 }

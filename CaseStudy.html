@@ -7,12 +7,11 @@
 </head>
 <body>
 
-<input type="text" id="txtSearch">
+<input type="text" id="txtSearch" oninput="searchResident()">
 <button type="button" onclick="searchResident()">Search</button>
 <p id="result"></p>
-
-<h2><label>Thêm Mới Cư Dân</label><br></h2>
-<div id="updates">
+<button onclick="addRes()" style="font-size: 30px"><b>Thêm Mới Cư dân</b></button>
+<div id="updates" style="display: none">
     <form id="myForm" onsubmit="addResident(); return false;">
         Tên Cư Dân:<br>
         <input type="text" id="addName" placeholder="Enter Name"><br>
