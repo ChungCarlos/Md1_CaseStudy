@@ -203,3 +203,10 @@ function edit(i) {
 function addRes(){
     document.getElementById("updates").style.display = "block";
 }
+
+
+let from = document.getElementById("link1");
+let to = document.getElementById("updates");
+from.addEventListener("click", function() {
+    to.scrollIntoView();
+});
