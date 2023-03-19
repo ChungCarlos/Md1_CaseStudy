@@ -68,10 +68,10 @@ function searchResident() {
     }
     let list = document.getElementById("result");
     list.innerHTML = "";
+    let listS = document.createElement("table")
     for (let i = 0; i < result.length; i++) {
         if (val !== '' && val !== ' ') {
-            let listS = document.createElement("table")
-            listS.innerHTML = `<tr><td>${result[i].name}</td><td>${result[i].gender}</td><td>${result[i].address}</td><td>${result[i].room}</td><td>${result[i].vehicle}</td><td>${result[i].telephone}</td></tr>`;
+            listS.innerHTML += `<tr><td>${result[i].name}</td><td>${result[i].gender}</td><td>${result[i].address}</td><td>${result[i].room}</td><td>${result[i].vehicle}</td><td>${result[i].telephone}</td></tr>`;
             list.appendChild(listS); // Thêm phần tử của Lists vào 1 phần tử List vào cuối danh sách
         }
     }
