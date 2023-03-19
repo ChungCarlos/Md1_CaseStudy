@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carlos City</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+<input type="text" id="txtSearch">
+<button type="button" onclick="searchResident()">Search</button>
+<p id="result"></p>
+
+<h2><label>Thêm Mới Cư Dân</label><br></h2>
+<div id="updates">
+    <form id="myForm" onsubmit="addResident(); return false;">
+        Tên Cư Dân:<br>
+        <input type="text" id="addName" placeholder="Enter Name"><br>
+        Giới Tính:<br>
+        <input type="radio" name="Gender" value="Male" checked>Male<br>
+        <input type="radio" name="Gender" value="Female">Female<br>
+        <input type="radio" name="Gender" value="Other">Other<br>
+        Ngày Sinh:<br>
+        <input type="date" id="addDate" placeholder="Enter Date"><br>
+        Địa Chỉ TT:<br>
+        <input type="text" id="addAddress" placeholder="Enter Address"><br>
+        Số Điện Thoại:<br>
+        <input type="number" maxlength="11" id="addTelephone" placeholder="Enter Telephone Number"><br>
+        Số Căn Hộ:<br>
+        <input type="text" id="addRoom" placeholder="Enter Room Number"><br>
+        Phương Tiện:<br>
+        <select id="vehicle">
+            <option value="Bike">Bike</option>
+            <option value="Car">Car</option>
+        </select><br>
+        <button type="submit">Thêm Cư Dân</button>
+    </form>
+</div>
+<h2>Danh Sách Cư Dân Carlos Building:</h2>
+<div id="residentList"></div>
+<script src="Event.js"></script>
+</body>
+</html>
