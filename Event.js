@@ -47,6 +47,7 @@ class Person {
         return this.vehicle
     }
 }
+
 let resident1 = new Person("Messi Lùn", "Male", "1995-12-05", "Argentina", "0123456789", "P12a10", "Car")
 let resident2 = new Person("Ronaldo Điệu", "Male", "1988-10-05", "Portugal", "09699969", "P302", "Car")
 let resident3 = new Person("Harry Maguire", "Male", "1993-03-05", "England", "0946123456", "P405", "Bike")
@@ -157,6 +158,8 @@ function edit(i) {
         '<option value="Car">Car</option> ' +
         '</select><p> ' +
         '<button type="button" onclick="update()">Update</button></p></form>'
+    upDate.scrollIntoView();
+
     document.getElementById('addName').value = arr[i].getName();
     document.querySelector('input[name="Gender"]:checked').value = arr[i].getGender();
     document.getElementById('addDate').value = arr[i].getDate();
