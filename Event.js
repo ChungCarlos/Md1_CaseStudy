@@ -88,7 +88,7 @@ function displayList() {
     let list = `<tr><th>STT</th><th>Họ Tên</th><th>Giới Tính</th><th>Ngày Sinh</th><th>Địa Chỉ TT</th><th>Số Điện Thoại</th><th>Căn Hộ</th><th>Phương Tiện</th><th>Note</th><th colspan="2">Chức Năng</th></tr>`;
     for (let i = 0; i < arr.length; i++) {
         count++;
-        list += `<tr><td id="td1">${i + 1}</td><td>${arr[i].name}</td><td>${arr[i].gender}</td><td>${arr[i].date}</td><td>${arr[i].address}</td> <td>${arr[i].telephone}</td><td>${arr[i].room}</td><td  id="th1">${arr[i].vehicle}</td><td>${arr[i].note}</td><td><button onclick='edit(${i})'>Edit</button></td><td><button onclick='deleteProduct(${i})'>Delete</button></td></tr>`;
+        list += `<tr><td id="td1">${i + 1}</td><td>${arr[i].name}</td><td>${arr[i].gender}</td><td>${arr[i].date}</td><td>${arr[i].address}</td> <td>${arr[i].telephone}</td><td>${arr[i].room}</td><td  id="th1">${arr[i].vehicle}</td><td>${arr[i].note}</td><td><button onclick='edit(${i})'>Sửa</button></td><td><button onclick='deleteProduct(${i})'>Xoá</button></td></tr>`;
     }
     return document.getElementById("residentList").innerHTML = `<table>${list}<tr id="tr1"><td>Tổng:</td><td colspan="10">${count}</td></tr></table>`;
 }
@@ -165,7 +165,7 @@ function edit(i) {
         '<option value="Car">Car</option> ' +
         '</select><br>Note:<br>' +
         '<textarea id="note" placeholder="Enter 1 more information:" rows="5" cols="35"></textarea><br>' +
-        '<button type="button" onclick="update()">Update</button></form>'
+        '<button type="button" onclick="update()">Cập Nhật</button></form>'
     upDate.scrollIntoView();
 
     document.getElementById('addName').value = arr[i].getName();
